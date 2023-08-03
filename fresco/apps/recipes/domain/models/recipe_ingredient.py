@@ -2,9 +2,9 @@ import uuid
 
 from django.db import models
 
-from fresco.apps.recipes.domain.ingredient import Ingredient
-from fresco.apps.recipes.domain.recipe import Recipe
-from fresco.apps.recipes.domain.units import UnitsEnum
+from fresco.apps.recipes.domain.models.ingredient import Ingredient
+from fresco.apps.recipes.domain.models.recipe import Recipe
+from fresco.apps.recipes.domain.models.units import UnitsEnum
 from fresco.shared.base.base_model import BaseModel
 
 
