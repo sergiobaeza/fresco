@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "safedelete",
     "ninja_extra",
+    "fresco.apps.recipes",
 ]
 
 MIDDLEWARE = [
