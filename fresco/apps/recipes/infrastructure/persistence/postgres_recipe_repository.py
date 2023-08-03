@@ -5,15 +5,18 @@ from fresco.apps.recipes.domain.models.recipe import Recipe
 
 
 class PostgresRecipeRepository(RecipeRepository):
-    def save(recipe: Recipe) -> Recipe:
+    def save(self, recipe: Recipe) -> Recipe:
         recipe.save()
         return recipe
 
-    def get_all() -> List[Recipe]:
+    def get_all(self) -> List[Recipe]:
         return list(Recipe.objects.all())
 
-    def get(id: str) -> Recipe | None:
+    def get(self, id: str) -> Recipe | None:
         try:
             Recipe.objects.get(id=id)
         except:
             return None
+
+    def delete(self, recipe: Recipe):
+        recipe.delete()
