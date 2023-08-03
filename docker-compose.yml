@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  fresco-api:
+    build: .
+    restart: always
+    ports:
+      - 8000:8000
+
+  db:
+    image: postgres:15
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: sergio
+      POSTGRES_USER: postgres
+      POSTGRES_DB: fresco
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
