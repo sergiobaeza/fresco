@@ -326,6 +326,20 @@ doc = ["markdown-include", "mdx-include (>=1.4.1,<2.0.0)", "mkdocs (>=1.1.2,<2.0
 test = ["black (==21.12b0)", "click (==8.0.4)", "cryptography", "django-stubs", "flake8 (>=3.8.3,<7.0.0)", "isort (>=5.0.6,<6.0.0)", "pytest", "pytest-asyncio", "pytest-cov", "pytest-django", "python-jose (==3.3.0)"]
 
 [[package]]
+name = "django-safedelete"
+version = "1.3.2"
+description = "Mask your objects instead of deleting them from your database."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-safedelete-1.3.2.tar.gz", hash = "sha256:27ce5f92d7f4c6adab67c085420aa8c2a8e6751a7fb4a1c0afa70547ddeb2d7d"},
+    {file = "django_safedelete-1.3.2-py3-none-any.whl", hash = "sha256:82a97f2fe47654b202b0a7e0e46168292a1e28b5300b8d3cabb5eafa9ee2bda7"},
+]
+
+[package.dependencies]
+Django = "*"
+
+[[package]]
 name = "environs"
 version = "9.5.0"
 description = "simplified environment variable parsing"
@@ -814,4 +828,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "394fcd3ad71ae82d1121e7eec69340633c9ea6395b6a7fcbca793a00507a4045"
+content-hash = "d9e7ff1503ed877687e18cdbf0453cf38697bd8b425a5ef2dea42eaec4e3745d"
