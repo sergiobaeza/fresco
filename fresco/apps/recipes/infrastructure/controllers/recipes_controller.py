@@ -8,7 +8,11 @@ from ninja_jwt.authentication import JWTAuth
 
 from fresco.apps.recipes.domain.repositories.recipe_repository import RecipeRepository
 
-from fresco.apps.recipes.application.schemas.recipe import RecipeOut
+from fresco.apps.recipes.application.schemas.recipe import (
+    RecipeOut,
+    RecipeIn,
+    RecipeModifyIn,
+)
 from fresco.apps.recipes.application.services.recipes_service import RecipeService
 
 
@@ -17,8 +21,19 @@ class RecipesController:
     def __init__(self, recipe_service: RecipeService):
         self.recipe_service = recipe_service
 
+    @http_post("", response={201: None})
+    def create_recipe(self, payload: RecipeIn):
+        """
+        Creates a recipe
+        """
+        created = self.recipe_service.create_recipe(payload)
+        if not created:
+            raise HttpError(400, "Bad request")
+
+        return 201, None
+
     @http_get("", response=List[RecipeOut])
-    def get_recipe(self):
+    def get_recipes(self):
         """
         Get all the recipes in the database with their relationship between ingredients
         """
@@ -32,4 +47,14 @@ class RecipesController:
         recipe = self.recipe_service.get_recipe(id)
         if not recipe:
             raise HttpError(404, "Not found")
+        return recipe
+
+    @http_put("/{id}", response=RecipeOut)
+    def update_recipe_by_id(self, id: UUID4, payload: RecipeModifyIn):
+        """
+        Gets a recipe by his UUID
+        """
+        recipe = self.recipe_service.update_recipe(id, payload)
+        if not recipe:
+            raise HttpError(400, "Bad request")
         return recipe
