@@ -16,12 +16,25 @@ from fresco.apps.recipes.application.schemas.recipe import (
 from fresco.apps.recipes.application.services.recipes_service import RecipeService
 
 
-@api_controller("/recipes")
+@api_controller("/recipes", tags=["recipes"], auth=JWTAuth())
 class RecipesController:
     def __init__(self, recipe_service: RecipeService):
         self.recipe_service = recipe_service
 
-    @http_post("", response={201: None})
+    @http_post(
+        "",
+        response={201: None},
+        openapi_extra={
+            "responses": {
+                "400": {
+                    "description": "Bad request",
+                },
+                "401": {
+                    "description": "Not authenticated",
+                },
+            }
+        },
+    )
     def create_recipe(self, payload: RecipeIn):
         """
         Creates a recipe
@@ -32,14 +45,37 @@ class RecipesController:
 
         return 201, None
 
-    @http_get("", response=List[RecipeOut])
+    @http_get(
+        "",
+        response=List[RecipeOut],
+        openapi_extra={
+            "responses": {
+                "401": {
+                    "description": "Not authenticated",
+                },
+            }
+        },
+    )
     def get_recipes(self):
         """
         Get all the recipes in the database with their relationship between ingredients
         """
         return self.recipe_service.get_all_recipes()
 
-    @http_get("/{id}", response=RecipeOut)
+    @http_get(
+        "/{id}",
+        response=RecipeOut,
+        openapi_extra={
+            "responses": {
+                "401": {
+                    "description": "Not authenticated",
+                },
+                "404": {
+                    "description": "Resource not found",
+                },
+            }
+        },
+    )
     def get_recipe_by_id(self, id: UUID4):
         """
         Gets a recipe by his UUID
@@ -49,7 +85,20 @@ class RecipesController:
             raise HttpError(404, "Not found")
         return recipe
 
-    @http_put("/{id}", response=RecipeOut)
+    @http_put(
+        "/{id}",
+        response=RecipeOut,
+        openapi_extra={
+            "responses": {
+                "400": {
+                    "description": "Bad request",
+                },
+                "401": {
+                    "description": "Not authenticated",
+                },
+            }
+        },
+    )
     def update_recipe_by_id(self, id: UUID4, payload: RecipeModifyIn):
         """
         Gets a recipe by his UUID
