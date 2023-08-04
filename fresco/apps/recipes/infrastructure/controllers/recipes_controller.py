@@ -2,7 +2,7 @@ from typing import List
 from pydantic import UUID4
 
 from ninja.errors import HttpError
-
+from ninja.pagination import paginate, LimitOffsetPagination
 from ninja_extra import api_controller, http_get, http_post, http_put
 from ninja_jwt.authentication import JWTAuth
 
@@ -56,6 +56,7 @@ class RecipesController:
             }
         },
     )
+    @paginate(LimitOffsetPagination)
     def get_recipes(self):
         """
         Get all the recipes in the database with their relationship between ingredients

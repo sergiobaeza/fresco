@@ -13,14 +13,14 @@ This project is a representation of an API Rest for Recipes with CREATE, READ, a
 - **Package Management:** Poetry is used as the package manager.
 - **Pagination:** Pagination is implemented for better handling of large datasets.
 - **REST Approach:** The controllers are designed following the REST paradigm understanding what is a resource.
-- **Tests**: The project tries to get benefit from the structure to do Unit Tests
+- **Tests**: The project tries to get benefit from the structure to do Unit Tests, and e2e tests.
 
 ## Project Structure
 
 The project aims to follow the SOLID principles and the Hexagonal architecture, customized to suit the specific requirements of this project.
 
 ## Tests
-The project has the models and the recipe service tested. I've used Dependency Injection to override the external persistence and used a memory one.
+The project has the models and the recipe service tested. I've used Dependency Injection to override the external persistence and used a memory one. On the other way, the e2e tests are used by the django client.
 
 ## Deployment
 First of all rename the .env.example to .env and modify the variables if needed.
