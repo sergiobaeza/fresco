@@ -6,6 +6,8 @@ services:
     restart: always
     ports:
       - 8000:8000
+    env_file:
+      - ./env
 
   db:
     image: postgres:15
@@ -15,7 +17,6 @@ services:
     expose:
       - "5432"
     environment:
-      DOCKER_DEFAULT_PLATFORM: linux/amd64
       POSTGRES_PASSWORD: sergio
       POSTGRES_USER: postgres
       POSTGRES_DB: fresco

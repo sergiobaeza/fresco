@@ -8,7 +8,7 @@ from fresco.apps.recipes.infrastructure.persistence.postgres_recipe_repository i
 
 class RecipesDefinitionModule(Module):
     """
-    Class that allows to do the dependency injection
+    Class that allows to do the dependency injection by django injector package
     """
 
     def configure(self, binder: Binder) -> None:

@@ -19,6 +19,9 @@ six = "^1.16.0"
 django-safedelete = "^1.3.2"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest-django = "^4.5.2"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
