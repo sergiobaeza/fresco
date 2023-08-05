@@ -34,6 +34,11 @@ To deploy the application, you have the following options:
 ### Migrating Schemas
 
 To migrate the schemas to the database, execute the following command inside the container:
+```
+docker compose run -it fresco-api bash
+```
+
+And then
 
 ``` python
 python manage.py migrate

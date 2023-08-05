@@ -1,3 +1,5 @@
+import os
+
 from pathlib import Path
 
 from environs import Env
@@ -28,11 +30,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "pytest_django",
     "safedelete",
     "ninja_extra",
     "fresco.apps.recipes",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
